@@ -1,30 +1,32 @@
-const CACHE_NAME = 'japanese-vocab-v1.0.0';
+const CACHE_NAME = 'japanese-vocab-v1.0.1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/data/nouns.js',
-  '/data/verbs.js',
-  '/data/i_adjectives.js',
-  '/data/na_adjectives.js',
-  '/data/adverbs.js',
-  '/data/onomatopoeia.js',
-  '/data/keigo.js',
-  '/data/grammar.js',
-  '/manifest.json'
+  './',
+  './index.html',
+  './manifest.json',
+  './data/nouns.js',
+  './data/verbs.js',
+  './data/i_adjectives.js',
+  './data/na_adjectives.js',
+  './data/adverbs.js',
+  './data/onomatopoeia.js',
+  './data/keigo.js',
+  './data/grammar.js'
 ];
 
-// 安裝 Service Worker
 self.addEventListener('install', event => {
   console.log('Service Worker 安裝中...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('快取已開啟');
+        console.log('開始快取資源...');
         return cache.addAll(urlsToCache);
       })
       .then(() => {
-        console.log('所有資源已快取');
+        console.log('所有資源快取完成');
         return self.skipWaiting();
+      })
+      .catch(error => {
+        console.error('快取失敗:', error);
       })
   );
 });

@@ -522,7 +522,10 @@
         // 初始化
         init: function() {
             console.log('🚀 初始化日文單字學習系統...');
-            
+  console.log('📍 當前路徑:', window.location.href);
+  console.log('📱 PWA 支援:', 'serviceWorker' in navigator);
+  console.log('🏠 顯示模式:', window.matchMedia('(display-mode: standalone)').matches ? 'standalone' : 'browser');
+
             // 顯示環境標示
             if (this.isLocal) {
                 document.getElementById('envBadge').style.display = 'block';
@@ -547,18 +550,26 @@
 
         // 註冊 Service Worker
         registerServiceWorker: function() {
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/sw.js')
-                        .then(registration => {
-                            console.log('✅ ServiceWorker 註冊成功: ', registration.scope);
-                        })
-                        .catch(error => {
-                            console.log('❌ ServiceWorker 註冊失敗: ', error);
-                        });
-                });
-            }
-        },
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // 使用相對路徑
+      navigator.serviceWorker.register('./sw.js')
+        .then(registration => {
+          console.log('✅ ServiceWorker 註冊成功: ', registration.scope);
+          
+          // 檢查是否已控制頁面
+          if (navigator.serviceWorker.controller) {
+            console.log('✅ Service Worker 正在控制頁面');
+          } else {
+            console.log('ℹ️ 頁面重新載入後才會由 Service Worker 控制');
+          }
+        })
+        .catch(error => {
+          console.log('❌ ServiceWorker 註冊失敗: ', error);
+        });
+    });
+  }
+}
 
         // 設定安裝提示
         setupInstallPrompt: function() {
