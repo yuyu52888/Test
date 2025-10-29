@@ -367,6 +367,8 @@
                 <button class="btn" data-action="studySetup">📚 背誦模式</button>
                 <button class="btn btn-secondary" data-action="favoriteScreen">⭐ 收藏單字</button>
                 <button class="btn btn-secondary" data-action="progressScreen">📊 學習進度</button>
+                <!-- 手動更新按鈕 -->
+                <button class="btn btn-secondary" data-action="checkUpdate">🔄 檢查更新</button>
                 <!-- PWA 安裝按鈕 -->
                 <button class="btn btn-success" id="installButton" style="display: none;">📱 安裝到主螢幕</button>
             </div>
@@ -515,45 +517,156 @@
             vocabularyData: {},
             currentQuizType: '',
             deferredPrompt: null,
-
+            // ... 現有變數 ...
+            registration: null,
+            updateAvailable: false,
+ 
             // 初始化
             init: function() {
-                console.log('🚀 初始化日文單字學習系統...');
-                
-                // 顯示環境標示
-                if (this.isLocal) {
-                    document.getElementById('envBadge').style.display = 'block';
-                }
-                
-                // 註冊 Service Worker
-                this.registerServiceWorker();
-                
-                // 設定事件監聽器
-                this.setupEventListeners();
-                
-                // 載入單字資料庫
-                this.loadVocabularyData();
-                
-                // 載入學習進度和收藏
-                this.loadProgress();
-                this.loadFavorites();
-                
-                // 設定安裝提示
-                this.setupInstallPrompt();
-            },
+        console.log('🚀 初始化日文單字學習系統...');
+        
+        // 顯示環境標示
+        if (this.isLocal) {
+            document.getElementById('envBadge').style.display = 'block';
+        }
+        
+        // 註冊 Service Worker
+        this.registerServiceWorker();
+        
+        // 設定事件監聽器
+        this.setupEventListeners();
+        
+        // 載入單字資料庫
+        this.loadVocabularyData();
+        
+        // 載入學習進度和收藏
+        this.loadProgress();
+        this.loadFavorites();
+        
+        // 設定安裝提示
+        this.setupInstallPrompt();
+    },
 
             // 註冊 Service Worker
             registerServiceWorker: function() {
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('./sw.js')
-                        .then(registration => {
-                            console.log('✅ ServiceWorker 註冊成功: ', registration.scope);
-                        })
-                        .catch(error => {
-                            console.log('❌ ServiceWorker 註冊失敗: ', error);
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => {
+                    console.log('✅ ServiceWorker 註冊成功: ', reg.scope);
+                    this.registration = reg;
+                    
+                    // 監聽更新事件
+                    reg.addEventListener('updatefound', () => {
+                        console.log('🔄 發現新版本，正在下載...');
+                        const newWorker = reg.installing;
+                        
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    // 新版本已準備好，顯示更新提示
+                                    console.log('📦 新版本已下載完成');
+                                    this.updateAvailable = true;
+                                    this.showUpdateNotification();
+                                }
+                            }
                         });
-                }
-            },
+                    });
+                    
+                    // 檢查是否已有等待的更新
+                    if (reg.waiting) {
+                        this.updateAvailable = true;
+                        this.showUpdateNotification();
+                    }
+                })
+                .catch(error => {
+                    console.log('❌ ServiceWorker 註冊失敗: ', error);
+                });
+        }
+    },
+
+    // 顯示更新通知
+    showUpdateNotification: function() {
+        // 可以在這裡添加視覺提示，比如在角落顯示一個小紅點
+        console.log('💡 新版本可用！請點擊「檢查更新」按鈕來更新。');
+        
+        // 可選：在更新按鈕上顯示提示
+        const updateBtn = document.querySelector('[data-action="checkUpdate"]');
+        if (updateBtn) {
+            updateBtn.innerHTML = '🔄 檢查更新 <span style="color: red; font-size: 0.8em;">●</span>';
+            updateBtn.title = '有新版本可用！';
+        }
+    },
+
+    // 檢查更新
+    checkForUpdates: function() {
+        if (!this.registration) {
+            alert('Service Worker 未就緒');
+            return;
+        }
+        
+        console.log('🔍 手動檢查更新...');
+        
+        // 顯示載入狀態
+        const updateBtn = document.querySelector('[data-action="checkUpdate"]');
+        const originalText = updateBtn.innerHTML;
+        updateBtn.innerHTML = '⏳ 檢查中...';
+        updateBtn.disabled = true;
+        
+        // 強制檢查更新
+        this.registration.update().then(() => {
+            console.log('✅ 更新檢查完成');
+            
+            if (this.updateAvailable && this.registration.waiting) {
+                // 有可用更新，提示用戶
+                this.showUpdatePrompt();
+            } else {
+                alert('✅ 已經是最新版本！');
+            }
+            
+            // 恢復按鈕狀態
+            updateBtn.innerHTML = originalText;
+            updateBtn.disabled = false;
+            
+        }).catch(error => {
+            console.error('❌ 更新檢查失敗:', error);
+            alert('檢查更新時發生錯誤');
+            
+            // 恢復按鈕狀態
+            updateBtn.innerHTML = originalText;
+            updateBtn.disabled = false;
+        });
+    },
+
+    // 顯示更新提示
+    showUpdatePrompt: function() {
+        if (confirm('發現新版本單字庫！是否立即更新？\n\n更新後應用將重新載入。')) {
+            this.applyUpdate();
+        }
+    },
+
+    // 應用更新
+    applyUpdate: function() {
+        if (this.registration && this.registration.waiting) {
+            console.log('🎯 應用新版本...');
+            
+            // 通知 Service Worker 跳過等待
+            this.registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+            
+            // 監聽控制器變化，然後重新載入
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                console.log('🔄 控制器已更新，重新載入頁面...');
+                window.location.reload();
+            });
+            
+            // 如果幾秒後還沒重新載入，強制重新載入
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+            
+        } else {
+            alert('沒有可用的更新');
+        }
+    },
 
             // 設定安裝提示
             setupInstallPrompt: function() {
@@ -624,41 +737,45 @@
 
             // 處理按鈕動作
             handleAction: function(action) {
-                console.log('執行動作:', action);
-                
-                switch(action) {
-                    // 畫面切換
-                    case 'mainMenu': this.showScreen('mainMenu'); break;
-                    case 'quizSetup': this.showScreen('quizSetup'); break;
-                    case 'studySetup': this.showScreen('studySetup'); break;
-                    case 'favoriteScreen': this.showScreen('favoriteScreen'); break;
-                    case 'progressScreen': this.showScreen('progressScreen'); break;
-                    
-                    // 測驗功能
-                    case 'startQuiz': this.startQuiz(); break;
-                    case 'startStudy': this.startStudy(); break;
-                    case 'startQuizFromFavorites': this.startQuizFromFavorites(); break;
-                    case 'startStudyFromFavorites': this.startStudyFromFavorites(); break;
-                    
-                    // 測驗控制
-                    case 'showAnswer': this.showAnswer(); break;
-                    case 'nextQuestion': this.nextQuestion(); break;
-                    case 'endQuizEarly': this.endQuizEarly(); break;
-                    
-                    // 背誦控制
-                    case 'showStudyAnswer': this.showStudyAnswer(); break;
-                    case 'nextStudyWord': this.nextStudyWord(); break;
-                    case 'endStudyEarly': this.endStudyEarly(); break;
-                    
-                    // 收藏功能
-                    case 'toggleFavorite': this.toggleFavorite(); break;
-                    case 'toggleStudyFavorite': this.toggleStudyFavorite(); break;
-                    
-                    // 語音功能
-                    case 'speakCurrentWord': this.speakCurrentWord(); break;
-                    case 'speakCurrentStudyWord': this.speakCurrentStudyWord(); break;
-                }
-            },
+        console.log('執行動作:', action);
+        
+        switch(action) {
+            // ... 現有動作 ...
+            
+            case 'mainMenu': this.showScreen('mainMenu'); break;
+            case 'quizSetup': this.showScreen('quizSetup'); break;
+            case 'studySetup': this.showScreen('studySetup'); break;
+            case 'favoriteScreen': this.showScreen('favoriteScreen'); break;
+            case 'progressScreen': this.showScreen('progressScreen'); break;
+            
+            // 測驗功能
+            case 'startQuiz': this.startQuiz(); break;
+            case 'startStudy': this.startStudy(); break;
+            case 'startQuizFromFavorites': this.startQuizFromFavorites(); break;
+            case 'startStudyFromFavorites': this.startStudyFromFavorites(); break;
+            
+            // 測驗控制
+            case 'showAnswer': this.showAnswer(); break;
+            case 'nextQuestion': this.nextQuestion(); break;
+            case 'endQuizEarly': this.endQuizEarly(); break;
+            
+            // 背誦控制
+            case 'showStudyAnswer': this.showStudyAnswer(); break;
+            case 'nextStudyWord': this.nextStudyWord(); break;
+            case 'endStudyEarly': this.endStudyEarly(); break;
+            
+            // 收藏功能
+            case 'toggleFavorite': this.toggleFavorite(); break;
+            case 'toggleStudyFavorite': this.toggleStudyFavorite(); break;
+            
+            // 語音功能
+            case 'speakCurrentWord': this.speakCurrentWord(); break;
+            case 'speakCurrentStudyWord': this.speakCurrentStudyWord(); break;
+            
+            // 更新功能
+            case 'checkUpdate': this.checkForUpdates(); break;
+        }
+    },
 
             // 載入收藏資料
             loadFavorites: function() {
