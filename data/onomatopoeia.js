@@ -198,6 +198,14 @@ window.onomatopoeiaData = [
         "meaning": "擔心、捏一把汗",
         "usage": "はらはらしながら見る",
         "particle_explanation": "と (副詞用法)：擔心地"
+    },
+    {
+        "id": "O026",
+        "hiragana": "はらはら",
+        "kanji": null,
+        "meaning": "擔心、捏一把汗",
+        "usage": "はらはらしながら見る",
+        "particle_explanation": "と (副詞用法)：擔心地"
     }
     // 可以繼續添加更多疊詞...
 ];
