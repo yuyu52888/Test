@@ -15,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 15px;
+            padding: 8px;
             color: #333;
         }
         
@@ -23,20 +23,21 @@
             max-width: 100%;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
+            border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             overflow: hidden;
-            min-height: calc(100vh - 30px);
+            min-height: calc(100vh - 16px);
             display: flex;
             flex-direction: column;
         }
         
         .screen {
-            padding: 25px 20px;
+            padding: 15px 12px;
             display: none;
             flex-direction: column;
             height: 100%;
             flex: 1;
+            min-height: auto;
         }
         
         .active {
@@ -45,9 +46,9 @@
         
         h1 {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             color: #2d3748;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
         
@@ -55,10 +56,10 @@
             background: #667eea;
             color: white;
             border: none;
-            padding: 16px 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin: 6px 0;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -69,7 +70,7 @@
         
         .btn:hover {
             background: #5a6fd8;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
         
         .btn-secondary {
@@ -102,23 +103,23 @@
         }
         
         .setting-group {
-            margin: 12px 0;
+            margin: 10px 0;
         }
         
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-weight: 500;
             color: #4a5568;
-            font-size: 14px;
+            font-size: 13px;
         }
         
         select, input {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 14px;
             background: white;
         }
         
@@ -132,32 +133,34 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-height: auto;
+            gap: 15px;
         }
         
         .question {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             text-align: center;
-            margin: 30px 0;
-            min-height: 50px;
+            margin: 15px 0;
+            min-height: 40px;
             color: #2d3748;
-            line-height: 1.4;
-            padding: 0 10px;
+            line-height: 1.3;
+            padding: 0 8px;
         }
         
         .options {
             display: grid;
-            gap: 12px;
-            margin: 20px 0;
+            gap: 8px;
+            margin: 15px 0;
         }
         
         .option-btn {
             background: #f7fafc;
             border: 2px solid #e2e8f0;
-            padding: 16px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 16px;
+            font-size: 14px;
             text-align: left;
         }
         
@@ -169,17 +172,18 @@
         .answer {
             background: #f0fff4;
             border: 2px solid #9ae6b4;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
             display: none;
-            line-height: 1.5;
+            line-height: 1.4;
+            font-size: 14px;
         }
         
         .controls {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 8px;
+            margin-top: 15px;
         }
         
         .controls .btn {
@@ -189,22 +193,22 @@
         
         .nav-controls {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
         }
         
         .nav-controls .btn {
             flex: 1;
             margin: 0;
-            padding: 12px;
-            font-size: 14px;
+            padding: 10px;
+            font-size: 13px;
         }
         
         .progress {
             text-align: center;
             color: #718096;
-            margin-bottom: 15px;
-            font-size: 14px;
+            margin-bottom: 10px;
+            font-size: 13px;
         }
         
         .hidden {
@@ -214,21 +218,21 @@
         .speak-btn {
             background: none;
             border: none;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             cursor: pointer;
             color: #667eea;
-            margin-left: 8px;
-            padding: 5px;
+            margin-left: 5px;
+            padding: 3px;
         }
         
         .favorite-btn {
             background: none;
             border: none;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             cursor: pointer;
             color: #718096;
-            margin-left: 8px;
-            padding: 5px;
+            margin-left: 5px;
+            padding: 3px;
             transition: color 0.3s;
         }
         
@@ -248,86 +252,92 @@
         
         .stats {
             background: #f7fafc;
-            padding: 15px;
-            border-radius: 12px;
-            margin: 10px 0;
-            font-size: 14px;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 8px 0;
+            font-size: 13px;
         }
         
         .env-badge {
             position: fixed;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             background: #e53e3e;
             color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 10px;
             z-index: 1000;
         }
         
         .favorite-star {
             color: #e53e3e;
-            margin-left: 5px;
+            margin-left: 4px;
         }
         
         .category-badge {
             display: inline-block;
             background: #edf2f7;
             color: #4a5568;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            margin-left: 8px;
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-size: 11px;
+            margin-left: 6px;
         }
         
+        .loading {
+            text-align: center;
+            padding: 15px;
+            color: #718096;
+            font-size: 14px;
+        }
+
         /* 手機適配 */
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 6px;
             }
             
             .container {
-                min-height: calc(100vh - 20px);
-                border-radius: 16px;
+                min-height: calc(100vh - 12px);
+                border-radius: 10px;
             }
             
             .screen {
-                padding: 20px 15px;
+                padding: 12px 10px;
             }
             
             h1 {
-                font-size: 1.3rem;
-                margin-bottom: 20px;
+                font-size: 1.1rem;
+                margin-bottom: 12px;
             }
             
             .question {
-                font-size: 1.6rem;
-                margin: 25px 0;
+                font-size: 1.3rem;
+                margin: 12px 0;
             }
             
             .btn {
-                padding: 14px 16px;
-                font-size: 15px;
+                padding: 10px 12px;
+                font-size: 13px;
             }
         }
         
         /* 小手機適配 */
         @media (max-width: 360px) {
             .question {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             
             .btn {
-                padding: 12px 14px;
-                font-size: 14px;
+                padding: 8px 10px;
+                font-size: 12px;
             }
-        }
-
-        .loading {
-            text-align: center;
-            padding: 20px;
-            color: #718096;
+            
+            .speak-btn, .favorite-btn {
+                font-size: 1.1rem;
+                margin-left: 4px;
+            }
         }
     </style>
 </head>
@@ -355,16 +365,16 @@
                 <label>測驗類型</label>
                 <select id="quizType">
                     <option value="mixed">🎯 綜合模式</option>
-    <option value="nouns">📖 名詞</option>  <!-- 改為 nouns -->
-    <option value="i_adjective">🔵 い形容詞</option>
-    <option value="na_adjective">🟢 な形容詞</option>
-    <option value="verb">🏃 動詞</option>    <!-- 改為 verb -->
-    <option value="adverb">⚡ 副詞</option>   <!-- 改為 adverb -->
-    <option value="onomatopoeia">🔊 疊詞</option>
-    <option value="keigo">🙏 敬語</option>
-    <option value="grammar">📝 文法</option>
-    <option value="custom">🎛️ 自定義ID範圍</option>
-    <option value="favorite">⭐ 收藏單字</option>
+                    <option value="nouns">📖 名詞</option>
+                    <option value="i_adjective">🔵 い形容詞</option>
+                    <option value="na_adjective">🟢 な形容詞</option>
+                    <option value="verb">🏃 動詞</option>
+                    <option value="adverb">⚡ 副詞</option>
+                    <option value="onomatopoeia">🔊 疊詞</option>
+                    <option value="keigo">🙏 敬語</option>
+                    <option value="grammar">📝 文法</option>
+                    <option value="custom">🎛️ 自定義ID範圍</option>
+                    <option value="favorite">⭐ 收藏單字</option>
                 </select>
             </div>
             <div class="setting-group" id="customRangeGroup" style="display:none">
@@ -392,17 +402,17 @@
             <div class="setting-group">
                 <label>學習類型</label>
                 <select id="studyType">
-    <option value="mixed">🎯 綜合模式</option>
-    <option value="nouns">📖 名詞</option>  <!-- 改為 nouns -->
-    <option value="i_adjective">🔵 い形容詞</option>
-    <option value="na_adjective">🟢 な形容詞</option>
-    <option value="verb">🏃 動詞</option>    <!-- 改為 verb -->
-    <option value="adverb">⚡ 副詞</option>   <!-- 改為 adverb -->
-    <option value="onomatopoeia">🔊 疊詞</option>
-    <option value="keigo">🙏 敬語</option>
-    <option value="grammar">📝 文法</option>
-    <option value="custom">🎛️ 自定義ID範圍</option>
-    <option value="favorite">⭐ 收藏單字</option>
+                    <option value="mixed">🎯 綜合模式</option>
+                    <option value="nouns">📖 名詞</option>
+                    <option value="i_adjective">🔵 い形容詞</option>
+                    <option value="na_adjective">🟢 な形容詞</option>
+                    <option value="verb">🏃 動詞</option>
+                    <option value="adverb">⚡ 副詞</option>
+                    <option value="onomatopoeia">🔊 疊詞</option>
+                    <option value="keigo">🙏 敬語</option>
+                    <option value="grammar">📝 文法</option>
+                    <option value="custom">🎛️ 自定義ID範圍</option>
+                    <option value="favorite">⭐ 收藏單字</option>
                 </select>
             </div>
             <div class="setting-group" id="studyCustomRangeGroup" style="display:none">
@@ -622,37 +632,37 @@
             },
 
             // 分配單字資料
-           assignVocabularyData: function(fileName) {
-    console.log(`📥 分配資料: ${fileName}`);
-    
-    switch(fileName) {
-        case 'nouns':
-            this.vocabularyData.nouns = window.nounsData || [];
-            console.log(`✅ 名詞資料分配完成:`, this.vocabularyData.nouns.length);
-            break;
-        case 'i_adjectives':
-            this.vocabularyData.i_adjective = window.iAdjectivesData || [];
-            break;
-        case 'na_adjectives':
-            this.vocabularyData.na_adjective = window.naAdjectivesData || [];
-            break;
-        case 'verbs':
-            this.vocabularyData.verb = window.verbsData || [];
-            break;
-        case 'adverbs':
-            this.vocabularyData.adverb = window.adverbsData || [];
-            break;
-        case 'onomatopoeia':
-            this.vocabularyData.onomatopoeia = window.onomatopoeiaData || [];
-            break;
-        case 'keigo':
-            this.vocabularyData.keigo = window.keigoData || [];
-            break;
-        case 'grammar':
-            this.vocabularyData.grammar = window.grammarData || [];
-            break;
-    }
-},
+            assignVocabularyData: function(fileName) {
+                console.log(`📥 分配資料: ${fileName}`);
+                
+                switch(fileName) {
+                    case 'nouns':
+                        this.vocabularyData.nouns = window.nounsData || [];
+                        console.log(`✅ 名詞資料分配完成:`, this.vocabularyData.nouns.length);
+                        break;
+                    case 'i_adjectives':
+                        this.vocabularyData.i_adjective = window.iAdjectivesData || [];
+                        break;
+                    case 'na_adjectives':
+                        this.vocabularyData.na_adjective = window.naAdjectivesData || [];
+                        break;
+                    case 'verbs':
+                        this.vocabularyData.verb = window.verbsData || [];
+                        break;
+                    case 'adverbs':
+                        this.vocabularyData.adverb = window.adverbsData || [];
+                        break;
+                    case 'onomatopoeia':
+                        this.vocabularyData.onomatopoeia = window.onomatopoeiaData || [];
+                        break;
+                    case 'keigo':
+                        this.vocabularyData.keigo = window.keigoData || [];
+                        break;
+                    case 'grammar':
+                        this.vocabularyData.grammar = window.grammarData || [];
+                        break;
+                }
+            },
 
             // 確保有單字資料
             ensureVocabularyData: function() {
@@ -747,8 +757,8 @@
             loadVocabulary: function(type, range) {
                 let words = [];
 
-console.log(`🔍 載入單字類型: ${type}`);
-    console.log(`📊 可用資料類別:`, Object.keys(this.vocabularyData));
+                console.log(`🔍 載入單字類型: ${type}`);
+                console.log(`📊 可用資料類別:`, Object.keys(this.vocabularyData));
                 
                 if (type === 'mixed') {
                     // 綜合模式：合併所有類別
@@ -762,19 +772,19 @@ console.log(`🔍 載入單字類型: ${type}`);
                         ...(this.vocabularyData.keigo || []),
                         ...(this.vocabularyData.grammar || [])
                     ];
-		    console.log(`🎯 綜合模式載入 ${words.length} 個單字`);
-                 } else if (type === 'custom') {
-        words = this.loadCustomRange(range);
-    } else if (type === 'favorite') {
-        words = this.getFavorites();
-    } else {
-        // 單一類別模式
-        console.log(`🔎 嘗試載入類別 ${type}:`, this.vocabularyData[type]);
-        words = this.vocabularyData[type] || [];
-        console.log(`📝 ${type} 類別載入 ${words.length} 個單字`);
-    }
-    
-    return words;
+                    console.log(`🎯 綜合模式載入 ${words.length} 個單字`);
+                } else if (type === 'custom') {
+                    words = this.loadCustomRange(range);
+                } else if (type === 'favorite') {
+                    words = this.getFavorites();
+                } else {
+                    // 單一類別模式
+                    console.log(`🔎 嘗試載入類別 ${type}:`, this.vocabularyData[type]);
+                    words = this.vocabularyData[type] || [];
+                    console.log(`📝 ${type} 類別載入 ${words.length} 個單字`);
+                }
+                
+                return words;
             },
 
             // 載入自定義範圍
@@ -812,17 +822,17 @@ console.log(`🔍 載入單字類型: ${type}`);
                 
                 // 顯示測驗類別
                 const categoryNames = {
-    'mixed': '綜合',
-    'nouns': '名詞',           // 改為 nouns
-    'i_adjective': 'い形容詞',
-    'na_adjective': 'な形容詞', 
-    'verb': '動詞',            // 改為 verb
-    'adverb': '副詞',          // 改為 adverb
-    'onomatopoeia': '疊詞',
-    'keigo': '敬語',
-    'grammar': '文法',
-    'favorite': '收藏'
-};
+                    'mixed': '綜合',
+                    'nouns': '名詞',
+                    'i_adjective': 'い形容詞',
+                    'na_adjective': 'な形容詞',
+                    'verb': '動詞',
+                    'adverb': '副詞',
+                    'onomatopoeia': '疊詞',
+                    'keigo': '敬語',
+                    'grammar': '文法',
+                    'favorite': '收藏'
+                };
                 document.getElementById('quizCategory').textContent = categoryNames[this.currentQuizType];
                 
                 // 更新收藏按鈕狀態
@@ -848,13 +858,13 @@ console.log(`🔍 載入單字類型: ${type}`);
                 const current = this.studyWords[this.currentStudyIndex];
                 document.getElementById('studyQuestionText').textContent = current.hiragana;
                 document.getElementById('studyProgressText').textContent = 
-                    `${this.currentStudyIndex + 1}/${this.studyWords.length}`;
+                    `${this.currentStudyIndex + 1}/${this.studyWords.length} (總共 ${this.studyWords.length} 個單字)`;
                 document.getElementById('studyAnswerDisplay').style.display = 'none';
                 
                 // 顯示背誦類別
                 const categoryNames = {
                     'mixed': '綜合',
-                    'noun': '名詞',
+                    'nouns': '名詞',
                     'i_adjective': 'い形容詞',
                     'na_adjective': 'な形容詞',
                     'verb': '動詞',
@@ -878,11 +888,21 @@ console.log(`🔍 載入單字類型: ${type}`);
                 button.style.color = isFavorite ? '#e53e3e' : '#718096';
             },
 
-            // 生成選項
+            // 生成選項（優化版）
             generateOptions: function(correctWord) {
                 const options = [correctWord.meaning];
-                const otherWords = this.currentVocab.filter(word => word.id !== correctWord.id);
-                const shuffledOthers = this.shuffleArray(otherWords);
+                
+                // 篩選同類型的單字作為錯誤選項
+                const sameTypeWords = this.currentVocab.filter(word => 
+                    word.id !== correctWord.id && 
+                    word.id.charAt(0) === correctWord.id.charAt(0) // 相同類型前綴
+                );
+                
+                // 如果同類型單字不足，使用所有單字
+                const candidateWords = sameTypeWords.length >= 3 ? sameTypeWords : 
+                                     this.currentVocab.filter(word => word.id !== correctWord.id);
+                
+                const shuffledOthers = this.shuffleArray(candidateWords);
                 
                 // 加入3個錯誤選項
                 for (let i = 0; i < 3 && i < shuffledOthers.length; i++) {
@@ -918,13 +938,13 @@ console.log(`🔍 載入單字類型: ${type}`);
                 const current = this.currentVocab[this.currentQuestionIndex];
                 const answerDiv = document.getElementById('answerDisplay');
                 answerDiv.innerHTML = `
-                    <div style="margin-bottom: 8px;">
-                        <strong style="font-size: 1.2em;">${current.kanji || current.hiragana}</strong>
-                        <span style="color: #718096; font-size: 0.9em; margin-left: 8px;">${current.id}</span>
+                    <div style="margin-bottom: 6px;">
+                        <strong style="font-size: 1.1em;">${current.kanji || current.hiragana}</strong>
+                        <span style="color: #718096; font-size: 0.8em; margin-left: 6px;">${current.id}</span>
                     </div>
-                    <div style="margin-bottom: 8px;"><strong>中文:</strong> ${current.meaning}</div>
-                    <div style="margin-bottom: 8px;"><strong>用法:</strong> ${current.usage}</div>
-                    <div style="color: #4a5568; font-size: 0.9em;"><em>${current.particle_explanation}</em></div>
+                    <div style="margin-bottom: 6px;"><strong>中文:</strong> ${current.meaning}</div>
+                    <div style="margin-bottom: 6px;"><strong>用法:</strong> ${current.usage}</div>
+                    <div style="color: #4a5568; font-size: 0.8em;"><em>${current.particle_explanation}</em></div>
                 `;
                 answerDiv.style.display = 'block';
             },
@@ -934,13 +954,13 @@ console.log(`🔍 載入單字類型: ${type}`);
                 const current = this.studyWords[this.currentStudyIndex];
                 const answerDiv = document.getElementById('studyAnswerDisplay');
                 answerDiv.innerHTML = `
-                    <div style="margin-bottom: 8px;">
-                        <strong style="font-size: 1.2em;">${current.kanji || current.hiragana}</strong>
-                        <span style="color: #718096; font-size: 0.9em; margin-left: 8px;">${current.id}</span>
+                    <div style="margin-bottom: 6px;">
+                        <strong style="font-size: 1.1em;">${current.kanji || current.hiragana}</strong>
+                        <span style="color: #718096; font-size: 0.8em; margin-left: 6px;">${current.id}</span>
                     </div>
-                    <div style="margin-bottom: 8px;"><strong>中文:</strong> ${current.meaning}</div>
-                    <div style="margin-bottom: 8px;"><strong>用法:</strong> ${current.usage}</div>
-                    <div style="color: #4a5568; font-size: 0.9em;"><em>${current.particle_explanation}</em></div>
+                    <div style="margin-bottom: 6px;"><strong>中文:</strong> ${current.meaning}</div>
+                    <div style="margin-bottom: 6px;"><strong>用法:</strong> ${current.usage}</div>
+                    <div style="color: #4a5568; font-size: 0.8em;"><em>${current.particle_explanation}</em></div>
                 `;
                 answerDiv.style.display = 'block';
             },
@@ -1090,15 +1110,15 @@ console.log(`🔍 載入單字類型: ${type}`);
                 favorites.forEach(word => {
                     const categoryIcon = this.getCategoryIcon(word.id);
                     html += `
-                        <div style="margin-bottom: 12px; padding: 12px; border-bottom: 1px solid #e2e8f0; border-radius: 8px; background: white;">
+                        <div style="margin-bottom: 10px; padding: 10px; border-bottom: 1px solid #e2e8f0; border-radius: 6px; background: white;">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="flex: 1;">
                                     <strong>${word.id}: ${word.kanji || word.hiragana}</strong>
-                                    <span style="color: #718096; font-size: 0.9em;"> - ${word.meaning}</span>
+                                    <span style="color: #718096; font-size: 0.8em;"> - ${word.meaning}</span>
                                 </div>
-                                <span style="font-size: 1.2em;">${categoryIcon}</span>
+                                <span style="font-size: 1.1em;">${categoryIcon}</span>
                             </div>
-                            <div style="color: #718096; font-size: 0.85em; margin-top: 4px;">${word.usage}</div>
+                            <div style="color: #718096; font-size: 0.75em; margin-top: 3px;">${word.usage}</div>
                         </div>
                     `;
                 });
@@ -1122,7 +1142,7 @@ console.log(`🔍 載入單字類型: ${type}`);
                 return icons[prefix] || '📝';
             },
 
-            // 文字轉語音
+            // 文字轉語音（優化版）
             speakText: function(text) {
                 if ('speechSynthesis' in window) {
                     // 停止之前的語音
@@ -1130,9 +1150,19 @@ console.log(`🔍 載入單字類型: ${type}`);
                     
                     const utterance = new SpeechSynthesisUtterance(text);
                     utterance.lang = 'ja-JP';
-                    utterance.rate = 0.8;
-                    utterance.pitch = 1.0;
-                    utterance.volume = 0.8;
+                    utterance.rate = 0.5;  // 更慢的速度
+                    utterance.pitch = 1.1; // 稍高的音調
+                    utterance.volume = 1.0;
+                    
+                    // 選擇日語語音（如果可用）
+                    const voices = speechSynthesis.getVoices();
+                    const japaneseVoice = voices.find(voice => 
+                        voice.lang.includes('ja') || voice.lang.includes('JP')
+                    );
+                    if (japaneseVoice) {
+                        utterance.voice = japaneseVoice;
+                    }
+                    
                     window.speechSynthesis.speak(utterance);
                 } else {
                     alert('您的瀏覽器不支援語音功能');
