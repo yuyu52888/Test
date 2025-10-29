@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- PWA 設定 -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="日文學習">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#764ba2">
-<meta name="msapplication-TileColor" content="#764ba2">
-<meta name="msapplication-config" content="/browserconfig.xml">
-
-<!-- 添加到主螢幕的圖示 -->
-<link rel="icon" type="image/png" href="icons/icon-72x72.png">
-<link rel="apple-touch-icon" href="icons/icon-152x152.png">
-<link rel="apple-touch-startup-image" href="icons/icon-512x512.png">
-
-<!-- Manifest -->
-<link rel="manifest" href="manifest.json">
-
-
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="日文單字學習">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#764ba2">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="icons/icon-72x72.png">
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
+    
     <title>日文單字學習</title>
     <style>
         * {
@@ -33,7 +31,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 8px;
+            padding: 15px;
             color: #333;
         }
         
@@ -41,21 +39,20 @@
             max-width: 100%;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             overflow: hidden;
-            min-height: calc(100vh - 16px);
+            min-height: calc(100vh - 30px);
             display: flex;
             flex-direction: column;
         }
         
         .screen {
-            padding: 15px 12px;
+            padding: 25px 20px;
             display: none;
             flex-direction: column;
             height: 100%;
             flex: 1;
-            min-height: auto;
         }
         
         .active {
@@ -64,9 +61,9 @@
         
         h1 {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             color: #2d3748;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 600;
         }
         
@@ -74,10 +71,10 @@
             background: #667eea;
             color: white;
             border: none;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 14px;
-            margin: 6px 0;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            margin: 8px 0;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -88,7 +85,7 @@
         
         .btn:hover {
             background: #5a6fd8;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
         
         .btn-secondary {
@@ -121,23 +118,23 @@
         }
         
         .setting-group {
-            margin: 10px 0;
+            margin: 12px 0;
         }
         
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-weight: 500;
             color: #4a5568;
-            font-size: 13px;
+            font-size: 14px;
         }
         
         select, input {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 16px;
             background: white;
         }
         
@@ -151,34 +148,32 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: auto;
-            gap: 15px;
         }
         
         .question {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             text-align: center;
-            margin: 15px 0;
-            min-height: 40px;
+            margin: 30px 0;
+            min-height: 50px;
             color: #2d3748;
-            line-height: 1.3;
-            padding: 0 8px;
+            line-height: 1.4;
+            padding: 0 10px;
         }
         
         .options {
             display: grid;
-            gap: 8px;
-            margin: 15px 0;
+            gap: 12px;
+            margin: 20px 0;
         }
         
         .option-btn {
             background: #f7fafc;
             border: 2px solid #e2e8f0;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 16px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 14px;
+            font-size: 16px;
             text-align: left;
         }
         
@@ -190,18 +185,17 @@
         .answer {
             background: #f0fff4;
             border: 2px solid #9ae6b4;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
             display: none;
-            line-height: 1.4;
-            font-size: 14px;
+            line-height: 1.5;
         }
         
         .controls {
             display: flex;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
         }
         
         .controls .btn {
@@ -211,22 +205,22 @@
         
         .nav-controls {
             display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         
         .nav-controls .btn {
             flex: 1;
             margin: 0;
-            padding: 10px;
-            font-size: 13px;
+            padding: 12px;
+            font-size: 14px;
         }
         
         .progress {
             text-align: center;
             color: #718096;
-            margin-bottom: 10px;
-            font-size: 13px;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
         
         .hidden {
@@ -236,21 +230,21 @@
         .speak-btn {
             background: none;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
             color: #667eea;
-            margin-left: 5px;
-            padding: 3px;
+            margin-left: 8px;
+            padding: 5px;
         }
         
         .favorite-btn {
             background: none;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
             color: #718096;
-            margin-left: 5px;
-            padding: 3px;
+            margin-left: 8px;
+            padding: 5px;
             transition: color 0.3s;
         }
         
@@ -270,91 +264,91 @@
         
         .stats {
             background: #f7fafc;
-            padding: 12px;
-            border-radius: 10px;
-            margin: 8px 0;
-            font-size: 13px;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 10px 0;
+            font-size: 14px;
         }
         
         .env-badge {
             position: fixed;
-            top: 8px;
-            right: 8px;
+            top: 10px;
+            right: 10px;
             background: #e53e3e;
             color: white;
-            padding: 3px 6px;
-            border-radius: 3px;
-            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
             z-index: 1000;
         }
         
         .favorite-star {
             color: #e53e3e;
-            margin-left: 4px;
+            margin-left: 5px;
         }
         
         .category-badge {
             display: inline-block;
             background: #edf2f7;
             color: #4a5568;
-            padding: 3px 6px;
-            border-radius: 5px;
-            font-size: 11px;
-            margin-left: 6px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-left: 8px;
         }
         
         .loading {
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             color: #718096;
-            font-size: 14px;
+        }
+
+        /* PWA 安裝按鈕 */
+        #installButton {
+            margin-top: 10px;
+            display: none;
         }
 
         /* 手機適配 */
         @media (max-width: 480px) {
             body {
-                padding: 6px;
+                padding: 10px;
             }
             
             .container {
-                min-height: calc(100vh - 12px);
-                border-radius: 10px;
+                min-height: calc(100vh - 20px);
+                border-radius: 16px;
             }
             
             .screen {
-                padding: 12px 10px;
+                padding: 20px 15px;
             }
             
             h1 {
-                font-size: 1.1rem;
-                margin-bottom: 12px;
+                font-size: 1.3rem;
+                margin-bottom: 20px;
             }
             
             .question {
-                font-size: 1.3rem;
-                margin: 12px 0;
+                font-size: 1.6rem;
+                margin: 25px 0;
             }
             
             .btn {
-                padding: 10px 12px;
-                font-size: 13px;
+                padding: 14px 16px;
+                font-size: 15px;
             }
         }
         
         /* 小手機適配 */
         @media (max-width: 360px) {
             .question {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
             
             .btn {
-                padding: 8px 10px;
-                font-size: 12px;
-            }
-            
-            .speak-btn, .favorite-btn {
-                font-size: 1.1rem;
-                margin-left: 4px;
+                padding: 12px 14px;
+                font-size: 14px;
             }
         }
     </style>
@@ -373,6 +367,8 @@
                 <button class="btn" data-action="studySetup">📚 背誦模式</button>
                 <button class="btn btn-secondary" data-action="favoriteScreen">⭐ 收藏單字</button>
                 <button class="btn btn-secondary" data-action="progressScreen">📊 學習進度</button>
+                <!-- PWA 安裝按鈕 -->
+                <button class="btn btn-success" id="installButton" style="display: none;">📱 安裝到主螢幕</button>
             </div>
         </div>
         
@@ -505,376 +501,381 @@
         </div>
     </div>
 
-<script>
-    // 使用命名空間避免變數衝突
-    const app = {
-        // 全域變數
-        currentVocab: [],
-        currentQuestionIndex: 0,
-        score: 0,
-        quizMode: true,
-        studyWords: [],
-        currentStudyIndex: 0,
-        isLocal: window.location.protocol === 'file:',
-        vocabularyData: {},
-        currentQuizType: '',
+    <script>
+        // 使用命名空間避免變數衝突
+        const app = {
+            // 全域變數
+            currentVocab: [],
+            currentQuestionIndex: 0,
+            score: 0,
+            quizMode: true,
+            studyWords: [],
+            currentStudyIndex: 0,
+            isLocal: window.location.protocol === 'file:',
+            vocabularyData: {},
+            currentQuizType: '',
+            deferredPrompt: null,
 
-        // 初始化
-        init: function() {
-            console.log('🚀 初始化日文單字學習系統...');
-  console.log('📍 當前路徑:', window.location.href);
-  console.log('📱 PWA 支援:', 'serviceWorker' in navigator);
-  console.log('🏠 顯示模式:', window.matchMedia('(display-mode: standalone)').matches ? 'standalone' : 'browser');
+            // 初始化
+            init: function() {
+                console.log('🚀 初始化日文單字學習系統...');
+                
+                // 顯示環境標示
+                if (this.isLocal) {
+                    document.getElementById('envBadge').style.display = 'block';
+                }
+                
+                // 註冊 Service Worker
+                this.registerServiceWorker();
+                
+                // 設定事件監聽器
+                this.setupEventListeners();
+                
+                // 載入單字資料庫
+                this.loadVocabularyData();
+                
+                // 載入學習進度和收藏
+                this.loadProgress();
+                this.loadFavorites();
+                
+                // 設定安裝提示
+                this.setupInstallPrompt();
+            },
 
-            // 顯示環境標示
-            if (this.isLocal) {
-                document.getElementById('envBadge').style.display = 'block';
-            }
-            
             // 註冊 Service Worker
-            this.registerServiceWorker();
-            
-            // 設定事件監聽器
-            this.setupEventListeners();
-            
-            // 載入單字資料庫
-            this.loadVocabularyData();
-            
-            // 載入學習進度和收藏
-            this.loadProgress();
-            this.loadFavorites();
-            
+            registerServiceWorker: function() {
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('./sw.js')
+                        .then(registration => {
+                            console.log('✅ ServiceWorker 註冊成功: ', registration.scope);
+                        })
+                        .catch(error => {
+                            console.log('❌ ServiceWorker 註冊失敗: ', error);
+                        });
+                }
+            },
+
             // 設定安裝提示
-            this.setupInstallPrompt();
-        },
-
-        // 註冊 Service Worker
-        registerServiceWorker: function() {
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      // 使用相對路徑
-      navigator.serviceWorker.register('./sw.js')
-        .then(registration => {
-          console.log('✅ ServiceWorker 註冊成功: ', registration.scope);
-          
-          // 檢查是否已控制頁面
-          if (navigator.serviceWorker.controller) {
-            console.log('✅ Service Worker 正在控制頁面');
-          } else {
-            console.log('ℹ️ 頁面重新載入後才會由 Service Worker 控制');
-          }
-        })
-        .catch(error => {
-          console.log('❌ ServiceWorker 註冊失敗: ', error);
-        });
-    });
-  }
-}
-
-        // 設定安裝提示
-        setupInstallPrompt: function() {
-            let deferredPrompt;
-            
-            // 檢查是否在行動設備上
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (!isMobile) return;
-            
-            const installButton = document.createElement('button');
-            installButton.innerHTML = '📱 安裝到主螢幕';
-            installButton.className = 'btn btn-success';
-            installButton.style.marginTop = '10px';
-            installButton.style.display = 'none';
-            installButton.id = 'installButton';
-            
-            // 添加到主選單
-            document.getElementById('mainMenuButtons').appendChild(installButton);
-            
-            window.addEventListener('beforeinstallprompt', (e) => {
-                console.log('📱 檢測到安裝提示');
-                // 防止瀏覽器自動顯示提示
-                e.preventDefault();
-                // 儲存事件以便後續使用
-                deferredPrompt = e;
-                // 顯示安裝按鈕
-                installButton.style.display = 'block';
+            setupInstallPrompt: function() {
+                // 檢查是否在行動設備上
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                if (!isMobile) return;
                 
-                installButton.onclick = () => {
-                    console.log('🔄 顯示安裝提示');
-                    // 隱藏安裝按鈕
-                    installButton.style.display = 'none';
-                    // 顯示安裝提示
-                    deferredPrompt.prompt();
-                    // 等待用戶回應
-                    deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === 'accepted') {
-                            console.log('✅ 用戶接受了安裝提示');
-                        } else {
-                            console.log('❌ 用戶拒絕了安裝提示');
-                            // 如果用戶拒絕，5秒後再次顯示按鈕
-                            setTimeout(() => {
-                                installButton.style.display = 'block';
-                            }, 5000);
-                        }
-                        deferredPrompt = null;
-                    });
-                };
-            });
-            
-            // 檢測是否已安裝
-            window.addEventListener('appinstalled', (evt) => {
-                console.log('🎉 應用程式已安裝到主螢幕');
-                installButton.style.display = 'none';
-            });
-            
-            // 檢查是否已經是 PWA 模式
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                console.log('📱 當前處於 PWA 模式');
-                installButton.style.display = 'none';
-            }
-        },
-
-        // 設定事件監聽器
-        setupEventListeners: function() {
-            // 為所有按鈕添加事件監聽
-            document.addEventListener('click', (e) => {
-                if (e.target.matches('[data-action]')) {
-                    const action = e.target.getAttribute('data-action');
-                    this.handleAction(action);
-                }
-            });
-
-            // 表單元素事件監聽
-            document.getElementById('quizType').addEventListener('change', () => this.toggleCustomRange());
-            document.getElementById('studyType').addEventListener('change', () => this.toggleStudyCustomRange());
-        },
-
-        // 處理按鈕動作
-        handleAction: function(action) {
-            console.log('執行動作:', action);
-            
-            switch(action) {
-                // 畫面切換
-                case 'mainMenu': this.showScreen('mainMenu'); break;
-                case 'quizSetup': this.showScreen('quizSetup'); break;
-                case 'studySetup': this.showScreen('studySetup'); break;
-                case 'favoriteScreen': this.showScreen('favoriteScreen'); break;
-                case 'progressScreen': this.showScreen('progressScreen'); break;
+                const installButton = document.getElementById('installButton');
                 
-                // 測驗功能
-                case 'startQuiz': this.startQuiz(); break;
-                case 'startStudy': this.startStudy(); break;
-                case 'startQuizFromFavorites': this.startQuizFromFavorites(); break;
-                case 'startStudyFromFavorites': this.startStudyFromFavorites(); break;
-                
-                // 測驗控制
-                case 'showAnswer': this.showAnswer(); break;
-                case 'nextQuestion': this.nextQuestion(); break;
-                case 'endQuizEarly': this.endQuizEarly(); break;
-                
-                // 背誦控制
-                case 'showStudyAnswer': this.showStudyAnswer(); break;
-                case 'nextStudyWord': this.nextStudyWord(); break;
-                case 'endStudyEarly': this.endStudyEarly(); break;
-                
-                // 收藏功能
-                case 'toggleFavorite': this.toggleFavorite(); break;
-                case 'toggleStudyFavorite': this.toggleStudyFavorite(); break;
-                
-                // 語音功能
-                case 'speakCurrentWord': this.speakCurrentWord(); break;
-                case 'speakCurrentStudyWord': this.speakCurrentStudyWord(); break;
-            }
-        },
-
-        // 載入收藏資料
-        loadFavorites: function() {
-            if (!localStorage.getItem('vocabFavorites')) {
-                localStorage.setItem('vocabFavorites', '[]');
-            }
-        },
-
-        // 載入單字資料庫
-        loadVocabularyData: function() {
-            const files = [
-                { name: 'nouns', url: 'data/nouns.js' },
-                { name: 'i_adjectives', url: 'data/i_adjectives.js' },
-                { name: 'na_adjectives', url: 'data/na_adjectives.js' },
-                { name: 'verbs', url: 'data/verbs.js' },
-                { name: 'adverbs', url: 'data/adverbs.js' },
-                { name: 'onomatopoeia', url: 'data/onomatopoeia.js' },
-                { name: 'keigo', url: 'data/keigo.js' },
-                { name: 'grammar', url: 'data/grammar.js' }
-            ];
-
-            let loadedCount = 0;
-            const totalFiles = files.length;
-            
-            files.forEach(file => {
-                const script = document.createElement('script');
-                script.src = file.url;
-                script.onload = () => {
-                    console.log(`✅ 已載入 ${file.name} 資料`);
-                    loadedCount++;
-                    this.assignVocabularyData(file.name);
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    console.log('📱 檢測到安裝提示');
+                    // 防止瀏覽器自動顯示提示
+                    e.preventDefault();
+                    // 儲存事件以便後續使用
+                    this.deferredPrompt = e;
+                    // 顯示安裝按鈕
+                    installButton.style.display = 'block';
                     
-                    if (loadedCount === totalFiles) {
-                        console.log('🎉 所有單字資料載入完成');
-                        this.ensureVocabularyData();
-                        this.hideLoading();
-                    }
-                };
-                script.onerror = () => {
-                    console.warn(`❌ 無法載入 ${file.name} 資料`);
-                    loadedCount++;
-                    // 建立空的資料結構
-                    this.vocabularyData[file.name] = [];
-                    if (loadedCount === totalFiles) {
-                        this.ensureVocabularyData();
-                        this.hideLoading();
-                    }
-                };
-                document.head.appendChild(script);
-            });
-        },
-
-        // 隱藏載入畫面
-        hideLoading: function() {
-            document.getElementById('loadingText').style.display = 'none';
-            document.getElementById('mainMenuButtons').style.display = 'block';
-        },
-
-        // 分配單字資料
-        assignVocabularyData: function(fileName) {
-            console.log(`📥 分配資料: ${fileName}`);
-            
-            switch(fileName) {
-                case 'nouns':
-                    this.vocabularyData.nouns = window.nounsData || [];
-                    console.log(`✅ 名詞資料分配完成:`, this.vocabularyData.nouns.length);
-                    break;
-                case 'i_adjectives':
-                    this.vocabularyData.i_adjective = window.iAdjectivesData || [];
-                    break;
-                case 'na_adjectives':
-                    this.vocabularyData.na_adjective = window.naAdjectivesData || [];
-                    break;
-                case 'verbs':
-                    this.vocabularyData.verb = window.verbsData || [];
-                    break;
-                case 'adverbs':
-                    this.vocabularyData.adverb = window.adverbsData || [];
-                    break;
-                case 'onomatopoeia':
-                    this.vocabularyData.onomatopoeia = window.onomatopoeiaData || [];
-                    break;
-                case 'keigo':
-                    this.vocabularyData.keigo = window.keigoData || [];
-                    break;
-                case 'grammar':
-                    this.vocabularyData.grammar = window.grammarData || [];
-                    break;
-            }
-        },
-
-        // 確保有單字資料
-        ensureVocabularyData: function() {
-            // 檢查每個類別是否有資料，如果沒有就建立空陣列
-            const categories = ['nouns', 'i_adjective', 'na_adjective', 'verb', 'adverb', 'onomatopoeia', 'keigo', 'grammar'];
-            categories.forEach(cat => {
-                if (!this.vocabularyData[cat]) {
-                    this.vocabularyData[cat] = [];
+                    installButton.onclick = () => {
+                        console.log('🔄 顯示安裝提示');
+                        // 隱藏安裝按鈕
+                        installButton.style.display = 'none';
+                        // 顯示安裝提示
+                        this.deferredPrompt.prompt();
+                        // 等待用戶回應
+                        this.deferredPrompt.userChoice.then((choiceResult) => {
+                            if (choiceResult.outcome === 'accepted') {
+                                console.log('✅ 用戶接受了安裝提示');
+                            } else {
+                                console.log('❌ 用戶拒絕了安裝提示');
+                                // 如果用戶拒絕，5秒後再次顯示按鈕
+                                setTimeout(() => {
+                                    installButton.style.display = 'block';
+                                }, 5000);
+                            }
+                            this.deferredPrompt = null;
+                        });
+                    };
+                });
+                
+                // 檢測是否已安裝
+                window.addEventListener('appinstalled', (evt) => {
+                    console.log('🎉 應用程式已安裝到主螢幕');
+                    installButton.style.display = 'none';
+                });
+                
+                // 檢查是否已經是 PWA 模式
+                if (window.matchMedia('(display-mode: standalone)').matches) {
+                    console.log('📱 當前處於 PWA 模式');
+                    installButton.style.display = 'none';
                 }
-            });
-            
-            // 顯示載入的單字數量
-            let totalWords = 0;
-            categories.forEach(cat => {
-                totalWords += this.vocabularyData[cat].length;
-            });
-            console.log(`📊 總共載入 ${totalWords} 個單字`);
-        },
+            },
 
-        // 顯示畫面
-        showScreen: function(screenId) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(screenId).classList.add('active');
-            
-            if (screenId === 'progressScreen') {
-                this.showProgressStats();
-            } else if (screenId === 'favoriteScreen') {
-                this.showFavoriteList();
-            }
-        },
+            // 設定事件監聽器
+            setupEventListeners: function() {
+                // 為所有按鈕添加事件監聽
+                document.addEventListener('click', (e) => {
+                    if (e.target.matches('[data-action]')) {
+                        const action = e.target.getAttribute('data-action');
+                        this.handleAction(action);
+                    }
+                });
 
-        // 切換自定義範圍顯示
-        toggleCustomRange: function() {
-            const type = document.getElementById('quizType').value;
-            document.getElementById('customRangeGroup').style.display = 
-                type === 'custom' ? 'block' : 'none';
-        },
+                // 表單元素事件監聽
+                document.getElementById('quizType').addEventListener('change', () => this.toggleCustomRange());
+                document.getElementById('studyType').addEventListener('change', () => this.toggleStudyCustomRange());
+            },
 
-        toggleStudyCustomRange: function() {
-            const type = document.getElementById('studyType').value;
-            document.getElementById('studyCustomRangeGroup').style.display = 
-                type === 'custom' ? 'block' : 'none';
-        },
+            // 處理按鈕動作
+            handleAction: function(action) {
+                console.log('執行動作:', action);
+                
+                switch(action) {
+                    // 畫面切換
+                    case 'mainMenu': this.showScreen('mainMenu'); break;
+                    case 'quizSetup': this.showScreen('quizSetup'); break;
+                    case 'studySetup': this.showScreen('studySetup'); break;
+                    case 'favoriteScreen': this.showScreen('favoriteScreen'); break;
+                    case 'progressScreen': this.showScreen('progressScreen'); break;
+                    
+                    // 測驗功能
+                    case 'startQuiz': this.startQuiz(); break;
+                    case 'startStudy': this.startStudy(); break;
+                    case 'startQuizFromFavorites': this.startQuizFromFavorites(); break;
+                    case 'startStudyFromFavorites': this.startStudyFromFavorites(); break;
+                    
+                    // 測驗控制
+                    case 'showAnswer': this.showAnswer(); break;
+                    case 'nextQuestion': this.nextQuestion(); break;
+                    case 'endQuizEarly': this.endQuizEarly(); break;
+                    
+                    // 背誦控制
+                    case 'showStudyAnswer': this.showStudyAnswer(); break;
+                    case 'nextStudyWord': this.nextStudyWord(); break;
+                    case 'endStudyEarly': this.endStudyEarly(); break;
+                    
+                    // 收藏功能
+                    case 'toggleFavorite': this.toggleFavorite(); break;
+                    case 'toggleStudyFavorite': this.toggleStudyFavorite(); break;
+                    
+                    // 語音功能
+                    case 'speakCurrentWord': this.speakCurrentWord(); break;
+                    case 'speakCurrentStudyWord': this.speakCurrentStudyWord(); break;
+                }
+            },
 
-        // 開始測驗
-        startQuiz: function() {
-            const type = document.getElementById('quizType').value;
-            const range = document.getElementById('customRange').value;
-            const count = parseInt(document.getElementById('questionCount').value);
-            
-            this.currentQuizType = type;
-            this.currentVocab = this.loadVocabulary(type, range);
-            
-            if (this.currentVocab.length === 0) {
-                alert('沒有找到符合的單字！');
-                return;
-            }
-            
-            // 隨機選擇指定數量的單字
-            this.currentVocab = this.shuffleArray(this.currentVocab).slice(0, count);
-            this.currentQuestionIndex = 0;
-            this.score = 0;
-            this.quizMode = true;
-            
-            this.showScreen('quizScreen');
-            this.showQuestion();
-        },
+            // 載入收藏資料
+            loadFavorites: function() {
+                if (!localStorage.getItem('vocabFavorites')) {
+                    localStorage.setItem('vocabFavorites', '[]');
+                }
+            },
 
-        // 開始背誦
-        startStudy: function() {
-            const type = document.getElementById('studyType').value;
-            const range = document.getElementById('studyCustomRange').value;
-            
-            this.currentQuizType = type;
-            this.studyWords = this.loadVocabulary(type, range);
-            
-            if (this.studyWords.length === 0) {
-                alert('沒有找到符合的單字！');
-                return;
-            }
-            
-            this.currentStudyIndex = 0;
-            this.quizMode = false;
-            
-            this.showScreen('studyScreen');
-            this.showStudyWord();
-        },
+            // 載入單字資料庫
+            loadVocabularyData: function() {
+                const files = [
+                    { name: 'nouns', url: 'data/nouns.js' },
+                    { name: 'i_adjectives', url: 'data/i_adjectives.js' },
+                    { name: 'na_adjectives', url: 'data/na_adjectives.js' },
+                    { name: 'verbs', url: 'data/verbs.js' },
+                    { name: 'adverbs', url: 'data/adverbs.js' },
+                    { name: 'onomatopoeia', url: 'data/onomatopoeia.js' },
+                    { name: 'keigo', url: 'data/keigo.js' },
+                    { name: 'grammar', url: 'data/grammar.js' }
+                ];
 
-        // 載入單字資料
-        loadVocabulary: function(type, range) {
-            let words = [];
+                let loadedCount = 0;
+                const totalFiles = files.length;
+                
+                files.forEach(file => {
+                    const script = document.createElement('script');
+                    script.src = file.url;
+                    script.onload = () => {
+                        console.log(`✅ 已載入 ${file.name} 資料`);
+                        loadedCount++;
+                        this.assignVocabularyData(file.name);
+                        
+                        if (loadedCount === totalFiles) {
+                            console.log('🎉 所有單字資料載入完成');
+                            this.ensureVocabularyData();
+                            this.hideLoading();
+                        }
+                    };
+                    script.onerror = () => {
+                        console.warn(`❌ 無法載入 ${file.name} 資料`);
+                        loadedCount++;
+                        // 建立空的資料結構
+                        this.vocabularyData[file.name] = [];
+                        if (loadedCount === totalFiles) {
+                            this.ensureVocabularyData();
+                            this.hideLoading();
+                        }
+                    };
+                    document.head.appendChild(script);
+                });
+            },
 
-            console.log(`🔍 載入單字類型: ${type}`);
-            console.log(`📊 可用資料類別:`, Object.keys(this.vocabularyData));
-            
-            if (type === 'mixed') {
-                // 綜合模式：合併所有類別
-                words = [
+            // 隱藏載入畫面
+            hideLoading: function() {
+                document.getElementById('loadingText').style.display = 'none';
+                document.getElementById('mainMenuButtons').style.display = 'block';
+            },
+
+            // 分配單字資料
+            assignVocabularyData: function(fileName) {
+                console.log(`📥 分配資料: ${fileName}`);
+                
+                switch(fileName) {
+                    case 'nouns':
+                        this.vocabularyData.nouns = window.nounsData || [];
+                        console.log(`✅ 名詞資料分配完成:`, this.vocabularyData.nouns.length);
+                        break;
+                    case 'i_adjectives':
+                        this.vocabularyData.i_adjective = window.iAdjectivesData || [];
+                        break;
+                    case 'na_adjectives':
+                        this.vocabularyData.na_adjective = window.naAdjectivesData || [];
+                        break;
+                    case 'verbs':
+                        this.vocabularyData.verb = window.verbsData || [];
+                        break;
+                    case 'adverbs':
+                        this.vocabularyData.adverb = window.adverbsData || [];
+                        break;
+                    case 'onomatopoeia':
+                        this.vocabularyData.onomatopoeia = window.onomatopoeiaData || [];
+                        break;
+                    case 'keigo':
+                        this.vocabularyData.keigo = window.keigoData || [];
+                        break;
+                    case 'grammar':
+                        this.vocabularyData.grammar = window.grammarData || [];
+                        break;
+                }
+            },
+
+            // 確保有單字資料
+            ensureVocabularyData: function() {
+                // 檢查每個類別是否有資料，如果沒有就建立空陣列
+                const categories = ['nouns', 'i_adjective', 'na_adjective', 'verb', 'adverb', 'onomatopoeia', 'keigo', 'grammar'];
+                categories.forEach(cat => {
+                    if (!this.vocabularyData[cat]) {
+                        this.vocabularyData[cat] = [];
+                    }
+                });
+                
+                // 顯示載入的單字數量
+                let totalWords = 0;
+                categories.forEach(cat => {
+                    totalWords += this.vocabularyData[cat].length;
+                });
+                console.log(`📊 總共載入 ${totalWords} 個單字`);
+            },
+
+            // 顯示畫面
+            showScreen: function(screenId) {
+                document.querySelectorAll('.screen').forEach(screen => {
+                    screen.classList.remove('active');
+                });
+                document.getElementById(screenId).classList.add('active');
+                
+                if (screenId === 'progressScreen') {
+                    this.showProgressStats();
+                } else if (screenId === 'favoriteScreen') {
+                    this.showFavoriteList();
+                }
+            },
+
+            // 切換自定義範圍顯示
+            toggleCustomRange: function() {
+                const type = document.getElementById('quizType').value;
+                document.getElementById('customRangeGroup').style.display = 
+                    type === 'custom' ? 'block' : 'none';
+            },
+
+            toggleStudyCustomRange: function() {
+                const type = document.getElementById('studyType').value;
+                document.getElementById('studyCustomRangeGroup').style.display = 
+                    type === 'custom' ? 'block' : 'none';
+            },
+
+            // 開始測驗
+            startQuiz: function() {
+                const type = document.getElementById('quizType').value;
+                const range = document.getElementById('customRange').value;
+                const count = parseInt(document.getElementById('questionCount').value);
+                
+                this.currentQuizType = type;
+                this.currentVocab = this.loadVocabulary(type, range);
+                
+                if (this.currentVocab.length === 0) {
+                    alert('沒有找到符合的單字！');
+                    return;
+                }
+                
+                // 隨機選擇指定數量的單字
+                this.currentVocab = this.shuffleArray(this.currentVocab).slice(0, count);
+                this.currentQuestionIndex = 0;
+                this.score = 0;
+                this.quizMode = true;
+                
+                this.showScreen('quizScreen');
+                this.showQuestion();
+            },
+
+            // 開始背誦
+            startStudy: function() {
+                const type = document.getElementById('studyType').value;
+                const range = document.getElementById('studyCustomRange').value;
+                
+                this.currentQuizType = type;
+                this.studyWords = this.loadVocabulary(type, range);
+                
+                if (this.studyWords.length === 0) {
+                    alert('沒有找到符合的單字！');
+                    return;
+                }
+                
+                this.currentStudyIndex = 0;
+                this.quizMode = false;
+                
+                this.showScreen('studyScreen');
+                this.showStudyWord();
+            },
+
+            // 載入單字資料
+            loadVocabulary: function(type, range) {
+                let words = [];
+
+                console.log(`🔍 載入單字類型: ${type}`);
+                console.log(`📊 可用資料類別:`, Object.keys(this.vocabularyData));
+                
+                if (type === 'mixed') {
+                    // 綜合模式：合併所有類別
+                    words = [
+                        ...(this.vocabularyData.nouns || []),
+                        ...(this.vocabularyData.i_adjective || []),
+                        ...(this.vocabularyData.na_adjective || []),
+                        ...(this.vocabularyData.verb || []),
+                        ...(this.vocabularyData.adverb || []),
+                        ...(this.vocabularyData.onomatopoeia || []),
+                        ...(this.vocabularyData.keigo || []),
+                        ...(this.vocabularyData.grammar || [])
+                    ];
+                    console.log(`🎯 綜合模式載入 ${words.length} 個單字`);
+                } else if (type === 'custom') {
+                    words = this.loadCustomRange(range);
+                } else if (type === 'favorite') {
+                    words = this.getFavorites();
+                } else {
+                    // 單一類別模式
+                    console.log(`🔎 嘗試載入類別 ${type}:`, this.vocabularyData[type]);
+                    words = this.vocabularyData[type] || [];
+                    console.log(`📝 ${type} 類別載入 ${words.length} 個單字`);
+                }
+                
+                return words;
+            },
+
+            // 載入自定義範圍
+            loadCustomRange: function(range) {
+                const allWords = [
                     ...(this.vocabularyData.nouns || []),
                     ...(this.vocabularyData.i_adjective || []),
                     ...(this.vocabularyData.na_adjective || []),
@@ -884,494 +885,447 @@
                     ...(this.vocabularyData.keigo || []),
                     ...(this.vocabularyData.grammar || [])
                 ];
-                console.log(`🎯 綜合模式載入 ${words.length} 個單字`);
-            } else if (type === 'custom') {
-                words = this.loadCustomRange(range);
-            } else if (type === 'favorite') {
-                words = this.getFavorites();
-            } else {
-                // 單一類別模式
-                console.log(`🔎 嘗試載入類別 ${type}:`, this.vocabularyData[type]);
-                words = this.vocabularyData[type] || [];
-                console.log(`📝 ${type} 類別載入 ${words.length} 個單字`);
-            }
-            
-            return words;
-        },
+                
+                if (range) {
+                    const [start, end] = range.split('-');
+                    return allWords.filter(word => {
+                        return word.id >= start && word.id <= end;
+                    });
+                }
+                
+                return allWords;
+            },
 
-        // 載入自定義範圍
-        loadCustomRange: function(range) {
-            const allWords = [
-                ...(this.vocabularyData.nouns || []),
-                ...(this.vocabularyData.i_adjective || []),
-                ...(this.vocabularyData.na_adjective || []),
-                ...(this.vocabularyData.verb || []),
-                ...(this.vocabularyData.adverb || []),
-                ...(this.vocabularyData.onomatopoeia || []),
-                ...(this.vocabularyData.keigo || []),
-                ...(this.vocabularyData.grammar || [])
-            ];
-            
-            if (range) {
-                const [start, end] = range.split('-');
-                return allWords.filter(word => {
-                    return word.id >= start && word.id <= end;
+            // 顯示測驗題目
+            showQuestion: function() {
+                const current = this.currentVocab[this.currentQuestionIndex];
+                document.getElementById('questionText').textContent = current.hiragana;
+                document.getElementById('progressText').textContent = 
+                    `${this.currentQuestionIndex + 1}/${this.currentVocab.length}`;
+                document.getElementById('answerDisplay').style.display = 'none';
+                document.getElementById('showAnswerBtn').style.display = 'block';
+                document.getElementById('nextBtn').style.display = 'none';
+                
+                // 顯示測驗類別
+                const categoryNames = {
+                    'mixed': '綜合',
+                    'nouns': '名詞',
+                    'i_adjective': 'い形容詞',
+                    'na_adjective': 'な形容詞',
+                    'verb': '動詞',
+                    'adverb': '副詞',
+                    'onomatopoeia': '疊詞',
+                    'keigo': '敬語',
+                    'grammar': '文法',
+                    'favorite': '收藏'
+                };
+                document.getElementById('quizCategory').textContent = categoryNames[this.currentQuizType];
+                
+                // 更新收藏按鈕狀態
+                this.updateFavoriteButton('quizFavoriteBtn', current);
+                
+                // 生成選項
+                const options = this.generateOptions(current);
+                const optionsContainer = document.getElementById('optionsContainer');
+                optionsContainer.innerHTML = '';
+                
+                options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.className = 'option-btn';
+                    button.textContent = option;
+                    button.setAttribute('data-action', 'checkAnswer');
+                    button.onclick = () => this.checkAnswer(option, current);
+                    optionsContainer.appendChild(button);
                 });
-            }
-            
-            return allWords;
-        },
+            },
 
-        // 顯示測驗題目
-        showQuestion: function() {
-            const current = this.currentVocab[this.currentQuestionIndex];
-            document.getElementById('questionText').textContent = current.hiragana;
-            document.getElementById('progressText').textContent = 
-                `${this.currentQuestionIndex + 1}/${this.currentVocab.length}`;
-            document.getElementById('answerDisplay').style.display = 'none';
-            document.getElementById('showAnswerBtn').style.display = 'block';
-            document.getElementById('nextBtn').style.display = 'none';
-            
-            // 顯示測驗類別
-            const categoryNames = {
-                'mixed': '綜合',
-                'nouns': '名詞',
-                'i_adjective': 'い形容詞',
-                'na_adjective': 'な形容詞',
-                'verb': '動詞',
-                'adverb': '副詞',
-                'onomatopoeia': '疊詞',
-                'keigo': '敬語',
-                'grammar': '文法',
-                'favorite': '收藏'
-            };
-            document.getElementById('quizCategory').textContent = categoryNames[this.currentQuizType];
-            
+            // 顯示背誦單字
+            showStudyWord: function() {
+                const current = this.studyWords[this.currentStudyIndex];
+                document.getElementById('studyQuestionText').textContent = current.hiragana;
+                document.getElementById('studyProgressText').textContent = 
+                    `${this.currentStudyIndex + 1}/${this.studyWords.length}`;
+                document.getElementById('studyAnswerDisplay').style.display = 'none';
+                
+                // 顯示背誦類別
+                const categoryNames = {
+                    'mixed': '綜合',
+                    'nouns': '名詞',
+                    'i_adjective': 'い形容詞',
+                    'na_adjective': 'な形容詞',
+                    'verb': '動詞',
+                    'adverb': '副詞',
+                    'onomatopoeia': '疊詞',
+                    'keigo': '敬語',
+                    'grammar': '文法',
+                    'favorite': '收藏'
+                };
+                document.getElementById('studyCategory').textContent = categoryNames[this.currentQuizType];
+                
+                // 更新收藏按鈕狀態
+                this.updateFavoriteButton('studyFavoriteBtn', current);
+            },
+
             // 更新收藏按鈕狀態
-            this.updateFavoriteButton('quizFavoriteBtn', current);
-            
+            updateFavoriteButton: function(buttonId, word) {
+                const button = document.getElementById(buttonId);
+                const isFavorite = this.isFavorite(word);
+                button.textContent = isFavorite ? '★' : '☆';
+                button.style.color = isFavorite ? '#e53e3e' : '#718096';
+            },
+
             // 生成選項
-            const options = this.generateOptions(current);
-            const optionsContainer = document.getElementById('optionsContainer');
-            optionsContainer.innerHTML = '';
-            
-            options.forEach(option => {
-                const button = document.createElement('button');
-                button.className = 'option-btn';
-                button.textContent = option;
-                button.setAttribute('data-action', 'checkAnswer');
-                button.onclick = () => this.checkAnswer(option, current);
-                optionsContainer.appendChild(button);
-            });
-        },
-
-        // 顯示背誦單字
-        showStudyWord: function() {
-            const current = this.studyWords[this.currentStudyIndex];
-            document.getElementById('studyQuestionText').textContent = current.hiragana;
-            document.getElementById('studyProgressText').textContent = 
-                `${this.currentStudyIndex + 1}/${this.studyWords.length} (總共 ${this.studyWords.length} 個單字)`;
-            document.getElementById('studyAnswerDisplay').style.display = 'none';
-            
-            // 顯示背誦類別
-            const categoryNames = {
-                'mixed': '綜合',
-                'nouns': '名詞',
-                'i_adjective': 'い形容詞',
-                'na_adjective': 'な形容詞',
-                'verb': '動詞',
-                'adverb': '副詞',
-                'onomatopoeia': '疊詞',
-                'keigo': '敬語',
-                'grammar': '文法',
-                'favorite': '收藏'
-            };
-            document.getElementById('studyCategory').textContent = categoryNames[this.currentQuizType];
-            
-            // 更新收藏按鈕狀態
-            this.updateFavoriteButton('studyFavoriteBtn', current);
-        },
-
-        // 更新收藏按鈕狀態
-        updateFavoriteButton: function(buttonId, word) {
-            const button = document.getElementById(buttonId);
-            const isFavorite = this.isFavorite(word);
-            button.textContent = isFavorite ? '★' : '☆';
-            button.style.color = isFavorite ? '#e53e3e' : '#718096';
-        },
-
-        // 生成選項（優化版）
-        generateOptions: function(correctWord) {
-            const options = [correctWord.meaning];
-            
-            // 篩選同類型的單字作為錯誤選項
-            const sameTypeWords = this.currentVocab.filter(word => 
-                word.id !== correctWord.id && 
-                word.id.charAt(0) === correctWord.id.charAt(0) // 相同類型前綴
-            );
-            
-            // 如果同類型單字不足，使用所有單字
-            const candidateWords = sameTypeWords.length >= 3 ? sameTypeWords : 
-                                 this.currentVocab.filter(word => word.id !== correctWord.id);
-            
-            const shuffledOthers = this.shuffleArray(candidateWords);
-            
-            // 加入3個錯誤選項
-            for (let i = 0; i < 3 && i < shuffledOthers.length; i++) {
-                options.push(shuffledOthers[i].meaning);
-            }
-            
-            return this.shuffleArray(options);
-        },
-
-        // 檢查答案
-        checkAnswer: function(selected, correct) {
-            const isCorrect = selected === correct.meaning;
-            if (isCorrect) this.score++;
-            
-            this.showAnswer();
-            
-            // 禁用所有選項按鈕
-            document.querySelectorAll('.option-btn').forEach(btn => {
-                btn.disabled = true;
-                if (btn.textContent === correct.meaning) {
-                    btn.classList.add('correct');
-                } else if (btn.textContent === selected && !isCorrect) {
-                    btn.classList.add('incorrect');
+            generateOptions: function(correctWord) {
+                const options = [correctWord.meaning];
+                const otherWords = this.currentVocab.filter(word => word.id !== correctWord.id);
+                const shuffledOthers = this.shuffleArray(otherWords);
+                
+                // 加入3個錯誤選項
+                for (let i = 0; i < 3 && i < shuffledOthers.length; i++) {
+                    options.push(shuffledOthers[i].meaning);
                 }
-            });
-            
-            document.getElementById('showAnswerBtn').style.display = 'none';
-            document.getElementById('nextBtn').style.display = 'block';
-        },
+                
+                return this.shuffleArray(options);
+            },
 
-        // 顯示解答
-        showAnswer: function() {
-            const current = this.currentVocab[this.currentQuestionIndex];
-            const answerDiv = document.getElementById('answerDisplay');
-            answerDiv.innerHTML = `
-                <div style="margin-bottom: 6px;">
-                    <strong style="font-size: 1.1em;">${current.kanji || current.hiragana}</strong>
-                    <span style="color: #718096; font-size: 0.8em; margin-left: 6px;">${current.id}</span>
-                </div>
-                <div style="margin-bottom: 6px;"><strong>中文:</strong> ${current.meaning}</div>
-                <div style="margin-bottom: 6px;"><strong>用法:</strong> ${current.usage}</div>
-                <div style="color: #4a5568; font-size: 0.8em;"><em>${current.particle_explanation}</em></div>
-            `;
-            answerDiv.style.display = 'block';
-        },
+            // 檢查答案
+            checkAnswer: function(selected, correct) {
+                const isCorrect = selected === correct.meaning;
+                if (isCorrect) this.score++;
+                
+                this.showAnswer();
+                
+                // 禁用所有選項按鈕
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.disabled = true;
+                    if (btn.textContent === correct.meaning) {
+                        btn.classList.add('correct');
+                    } else if (btn.textContent === selected && !isCorrect) {
+                        btn.classList.add('incorrect');
+                    }
+                });
+                
+                document.getElementById('showAnswerBtn').style.display = 'none';
+                document.getElementById('nextBtn').style.display = 'block';
+            },
 
-        // 顯示背誦解答
-        showStudyAnswer: function() {
-            const current = this.studyWords[this.currentStudyIndex];
-            const answerDiv = document.getElementById('studyAnswerDisplay');
-            answerDiv.innerHTML = `
-                <div style="margin-bottom: 6px;">
-                    <strong style="font-size: 1.1em;">${current.kanji || current.hiragana}</strong>
-                    <span style="color: #718096; font-size: 0.8em; margin-left: 6px;">${current.id}</span>
-                </div>
-                <div style="margin-bottom: 6px;"><strong>中文:</strong> ${current.meaning}</div>
-                <div style="margin-bottom: 6px;"><strong>用法:</strong> ${current.usage}</div>
-                <div style="color: #4a5568; font-size: 0.8em;"><em>${current.particle_explanation}</em></div>
-            `;
-            answerDiv.style.display = 'block';
-        },
+            // 顯示解答
+            showAnswer: function() {
+                const current = this.currentVocab[this.currentQuestionIndex];
+                const answerDiv = document.getElementById('answerDisplay');
+                answerDiv.innerHTML = `
+                    <div style="margin-bottom: 8px;">
+                        <strong style="font-size: 1.2em;">${current.kanji || current.hiragana}</strong>
+                        <span style="color: #718096; font-size: 0.9em; margin-left: 8px;">${current.id}</span>
+                    </div>
+                    <div style="margin-bottom: 8px;"><strong>中文:</strong> ${current.meaning}</div>
+                    <div style="margin-bottom: 8px;"><strong>用法:</strong> ${current.usage}</div>
+                    <div style="color: #4a5568; font-size: 0.9em;"><em>${current.particle_explanation}</em></div>
+                `;
+                answerDiv.style.display = 'block';
+            },
 
-        // 下一題
-        nextQuestion: function() {
-            this.currentQuestionIndex++;
-            if (this.currentQuestionIndex < this.currentVocab.length) {
+            // 顯示背誦解答
+            showStudyAnswer: function() {
+                const current = this.studyWords[this.currentStudyIndex];
+                const answerDiv = document.getElementById('studyAnswerDisplay');
+                answerDiv.innerHTML = `
+                    <div style="margin-bottom: 8px;">
+                        <strong style="font-size: 1.2em;">${current.kanji || current.hiragana}</strong>
+                        <span style="color: #718096; font-size: 0.9em; margin-left: 8px;">${current.id}</span>
+                    </div>
+                    <div style="margin-bottom: 8px;"><strong>中文:</strong> ${current.meaning}</div>
+                    <div style="margin-bottom: 8px;"><strong>用法:</strong> ${current.usage}</div>
+                    <div style="color: #4a5568; font-size: 0.9em;"><em>${current.particle_explanation}</em></div>
+                `;
+                answerDiv.style.display = 'block';
+            },
+
+            // 下一題
+            nextQuestion: function() {
+                this.currentQuestionIndex++;
+                if (this.currentQuestionIndex < this.currentVocab.length) {
+                    this.showQuestion();
+                } else {
+                    this.endQuiz();
+                }
+            },
+
+            // 下一個背誦單字
+            nextStudyWord: function() {
+                this.currentStudyIndex++;
+                if (this.currentStudyIndex < this.studyWords.length) {
+                    this.showStudyWord();
+                } else {
+                    alert('🎉 背誦完成！');
+                    this.showScreen('mainMenu');
+                }
+            },
+
+            // 結束測驗
+            endQuiz: function() {
+                const percentage = Math.round((this.score / this.currentVocab.length) * 100);
+                let message = `🎉 測驗完成！\n得分: ${this.score}/${this.currentVocab.length} (${percentage}%)`;
+                
+                if (percentage >= 90) {
+                    message += '\n\n🏆 優秀！表現很棒！';
+                } else if (percentage >= 70) {
+                    message += '\n\n👍 不錯！繼續加油！';
+                } else {
+                    message += '\n\n💪 繼續努力，下次會更好！';
+                }
+                
+                alert(message);
+                this.saveProgress(this.score, this.currentVocab.length);
+                this.showScreen('mainMenu');
+            },
+
+            // 提前結束測驗
+            endQuizEarly: function() {
+                if (confirm('確定要提前結束測驗嗎？')) {
+                    const answeredQuestions = this.currentQuestionIndex + 1;
+                    const percentage = answeredQuestions > 0 ? Math.round((this.score / answeredQuestions) * 100) : 0;
+                    alert(`⏹️ 測驗提前結束！\n得分: ${this.score}/${answeredQuestions} (${percentage}%)`);
+                    this.showScreen('mainMenu');
+                }
+            },
+
+            // 提前結束背誦
+            endStudyEarly: function() {
+                if (confirm('確定要提前結束背誦嗎？')) {
+                    this.showScreen('mainMenu');
+                }
+            },
+
+            // 收藏功能
+            toggleFavorite: function() {
+                const current = this.currentVocab[this.currentQuestionIndex];
+                this.toggleFavoriteWord(current);
+                this.updateFavoriteButton('quizFavoriteBtn', current);
+            },
+
+            toggleStudyFavorite: function() {
+                const current = this.studyWords[this.currentStudyIndex];
+                this.toggleFavoriteWord(current);
+                this.updateFavoriteButton('studyFavoriteBtn', current);
+            },
+
+            toggleFavoriteWord: function(word) {
+                const favorites = this.getFavorites();
+                const index = favorites.findIndex(fav => fav.id === word.id);
+                
+                if (index === -1) {
+                    // 加入收藏
+                    favorites.push(word);
+                } else {
+                    // 移除收藏
+                    favorites.splice(index, 1);
+                }
+                
+                this.saveFavorites(favorites);
+            },
+
+            isFavorite: function(word) {
+                const favorites = this.getFavorites();
+                return favorites.some(fav => fav.id === word.id);
+            },
+
+            getFavorites: function() {
+                return JSON.parse(localStorage.getItem('vocabFavorites') || '[]');
+            },
+
+            saveFavorites: function(favorites) {
+                localStorage.setItem('vocabFavorites', JSON.stringify(favorites));
+            },
+
+            // 從收藏開始測驗
+            startQuizFromFavorites: function() {
+                const favorites = this.getFavorites();
+                if (favorites.length === 0) {
+                    alert('還沒有收藏任何單字！');
+                    return;
+                }
+                
+                this.currentQuizType = 'favorite';
+                this.currentVocab = favorites;
+                this.currentQuestionIndex = 0;
+                this.score = 0;
+                this.quizMode = true;
+                
+                this.showScreen('quizScreen');
                 this.showQuestion();
-            } else {
-                this.endQuiz();
-            }
-        },
+            },
 
-        // 下一個背誦單字
-        nextStudyWord: function() {
-            this.currentStudyIndex++;
-            if (this.currentStudyIndex < this.studyWords.length) {
-                this.showStudyWord();
-            } else {
-                alert('🎉 背誦完成！');
-                this.showScreen('mainMenu');
-            }
-        },
-
-        // 結束測驗
-        endQuiz: function() {
-            const percentage = Math.round((this.score / this.currentVocab.length) * 100);
-            let message = `🎉 測驗完成！\n得分: ${this.score}/${this.currentVocab.length} (${percentage}%)`;
-            
-            if (percentage >= 90) {
-                message += '\n\n🏆 優秀！表現很棒！';
-            } else if (percentage >= 70) {
-                message += '\n\n👍 不錯！繼續加油！';
-            } else {
-                message += '\n\n💪 繼續努力，下次會更好！';
-            }
-            
-            alert(message);
-            this.saveProgress(this.score, this.currentVocab.length);
-            this.showScreen('mainMenu');
-        },
-
-        // 提前結束測驗
-        endQuizEarly: function() {
-            if (confirm('確定要提前結束測驗嗎？')) {
-                const answeredQuestions = this.currentQuestionIndex + 1;
-                const percentage = answeredQuestions > 0 ? Math.round((this.score / answeredQuestions) * 100) : 0;
-                alert(`⏹️ 測驗提前結束！\n得分: ${this.score}/${answeredQuestions} (${percentage}%)`);
-                this.showScreen('mainMenu');
-            }
-        },
-
-        // 提前結束背誦
-        endStudyEarly: function() {
-            if (confirm('確定要提前結束背誦嗎？')) {
-                this.showScreen('mainMenu');
-            }
-        },
-
-        // 收藏功能
-        toggleFavorite: function() {
-            const current = this.currentVocab[this.currentQuestionIndex];
-            this.toggleFavoriteWord(current);
-            this.updateFavoriteButton('quizFavoriteBtn', current);
-        },
-
-        toggleStudyFavorite: function() {
-            const current = this.studyWords[this.currentStudyIndex];
-            this.toggleFavoriteWord(current);
-            this.updateFavoriteButton('studyFavoriteBtn', current);
-        },
-
-        toggleFavoriteWord: function(word) {
-            const favorites = this.getFavorites();
-            const index = favorites.findIndex(fav => fav.id === word.id);
-            
-            if (index === -1) {
-                // 加入收藏
-                favorites.push(word);
-            } else {
-                // 移除收藏
-                favorites.splice(index, 1);
-            }
-            
-            this.saveFavorites(favorites);
-        },
-
-        isFavorite: function(word) {
-            const favorites = this.getFavorites();
-            return favorites.some(fav => fav.id === word.id);
-        },
-
-        getFavorites: function() {
-            return JSON.parse(localStorage.getItem('vocabFavorites') || '[]');
-        },
-
-        saveFavorites: function(favorites) {
-            localStorage.setItem('vocabFavorites', JSON.stringify(favorites));
-        },
-
-        // 從收藏開始測驗
-        startQuizFromFavorites: function() {
-            const favorites = this.getFavorites();
-            if (favorites.length === 0) {
-                alert('還沒有收藏任何單字！');
-                return;
-            }
-            
-            this.currentQuizType = 'favorite';
-            this.currentVocab = favorites;
-            this.currentQuestionIndex = 0;
-            this.score = 0;
-            this.quizMode = true;
-            
-            this.showScreen('quizScreen');
-            this.showQuestion();
-        },
-
-        // 從收藏開始背誦
-        startStudyFromFavorites: function() {
-            const favorites = this.getFavorites();
-            if (favorites.length === 0) {
-                alert('還沒有收藏任何單字！');
-                return;
-            }
-            
-            this.currentQuizType = 'favorite';
-            this.studyWords = favorites;
-            this.currentStudyIndex = 0;
-            this.quizMode = false;
-            
-            this.showScreen('studyScreen');
-            this.showStudyWord();
-        },
-
-        showFavoriteList: function() {
-            const favorites = this.getFavorites();
-            const listDiv = document.getElementById('favoriteList');
-            
-            if (favorites.length === 0) {
-                listDiv.innerHTML = '<div class="stats"><p>還沒有收藏任何單字</p></div>';
-                return;
-            }
-            
-            let html = '<div class="stats">';
-            favorites.forEach(word => {
-                const categoryIcon = this.getCategoryIcon(word.id);
-                html += `
-                    <div style="margin-bottom: 10px; padding: 10px; border-bottom: 1px solid #e2e8f0; border-radius: 6px; background: white;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                            <div style="flex: 1;">
-                                <strong>${word.id}: ${word.kanji || word.hiragana}</strong>
-                                <span style="color: #718096; font-size: 0.8em;"> - ${word.meaning}</span>
-                            </div>
-                            <span style="font-size: 1.1em;">${categoryIcon}</span>
-                        </div>
-                        <div style="color: #718096; font-size: 0.75em; margin-top: 3px;">${word.usage}</div>
-                    </div>
-                `;
-            });
-            html += '</div>';
-            listDiv.innerHTML = html;
-        },
-
-        // 取得類別圖標
-        getCategoryIcon: function(wordId) {
-            const prefix = wordId.charAt(0);
-            const icons = {
-                'N': '📖', // 名詞
-                'I': '🔵', // い形容詞
-                'A': '🟢', // な形容詞
-                'V': '🏃', // 動詞
-                'D': '⚡', // 副詞
-                'O': '🔊', // 疊詞
-                'K': '🙏', // 敬語
-                'G': '📝'  // 文法
-            };
-            return icons[prefix] || '📝';
-        },
-
-        // 文字轉語音（優化版）
-        speakText: function(text) {
-            if ('speechSynthesis' in window) {
-                // 停止之前的語音
-                window.speechSynthesis.cancel();
-                
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'ja-JP';
-                utterance.rate = 0.7;  // 更慢的速度
-                utterance.pitch = 1.1; // 稍高的音調
-                utterance.volume = 1.0;
-                
-                // 選擇日語語音（如果可用）
-                const voices = speechSynthesis.getVoices();
-                const japaneseVoice = voices.find(voice => 
-                    voice.lang.includes('ja') || voice.lang.includes('JP')
-                );
-                if (japaneseVoice) {
-                    utterance.voice = japaneseVoice;
+            // 從收藏開始背誦
+            startStudyFromFavorites: function() {
+                const favorites = this.getFavorites();
+                if (favorites.length === 0) {
+                    alert('還沒有收藏任何單字！');
+                    return;
                 }
                 
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert('您的瀏覽器不支援語音功能');
-            }
-        },
-
-        speakCurrentWord: function() {
-            const current = this.currentVocab[this.currentQuestionIndex];
-            this.speakText(current.hiragana);
-        },
-
-        speakCurrentStudyWord: function() {
-            const current = this.studyWords[this.currentStudyIndex];
-            this.speakText(current.hiragana);
-        },
-
-        // 工具函數
-        shuffleArray: function(array) {
-            const newArray = [...array];
-            for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-            }
-            return newArray;
-        },
-
-        // 學習進度功能
-        saveProgress: function(score, total) {
-            const progress = JSON.parse(localStorage.getItem('vocabProgress') || '{}');
-            const today = new Date().toISOString().split('T')[0];
-            
-            if (!progress[today]) {
-                progress[today] = { correct: 0, total: 0, sessions: 0 };
-            }
-            
-            progress[today].correct += score;
-            progress[today].total += total;
-            progress[today].sessions += 1;
-            
-            localStorage.setItem('vocabProgress', JSON.stringify(progress));
-        },
-
-        loadProgress: function() {
-            return JSON.parse(localStorage.getItem('vocabProgress') || '{}');
-        },
-
-        showProgressStats: function() {
-            const progress = this.loadProgress();
-            const statsDiv = document.getElementById('progressStats');
-            
-            if (Object.keys(progress).length === 0) {
-                statsDiv.innerHTML = '<div class="stats"><p>尚無學習記錄</p></div>';
-                return;
-            }
-            
-            let html = '';
-            let totalCorrect = 0;
-            let totalQuestions = 0;
-            let totalSessions = 0;
-            
-            // 依日期顯示進度
-            const dates = Object.keys(progress).sort().reverse().slice(0, 7); // 只顯示最近7天
-            dates.forEach(date => {
-                const data = progress[date];
-                const percentage = Math.round((data.correct / data.total) * 100);
-                totalCorrect += data.correct;
-                totalQuestions += data.total;
-                totalSessions += data.sessions;
+                this.currentQuizType = 'favorite';
+                this.studyWords = favorites;
+                this.currentStudyIndex = 0;
+                this.quizMode = false;
                 
-                html += `
-                    <div class="stats">
-                        <strong>${date}</strong><br>
-                        📊 答對: ${data.correct}/${data.total} (${percentage}%)<br>
-                        🎯 練習次數: ${data.sessions}次
-                    </div>
-                `;
-            });
-            
-            // 總計
-            const totalPercentage = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
-            html = `
-                <div class="stats" style="background: #e6fffa; border-left: 4px solid #38a169;">
-                    <strong>📈 總計統計</strong><br>
-                    ✅ 總答對: ${totalCorrect}/${totalQuestions} (${totalPercentage}%)<br>
-                    🎯 總練習次數: ${totalSessions}次<br>
-                    📅 最近記錄: ${dates.length}天
-                </div>
-            ` + html;
-            
-            statsDiv.innerHTML = html;
-        }
-    };
+                this.showScreen('studyScreen');
+                this.showStudyWord();
+            },
 
-    // 初始化應用程式
-    document.addEventListener('DOMContentLoaded', function() {
-        app.init();
-    });
-</script>
+            showFavoriteList: function() {
+                const favorites = this.getFavorites();
+                const listDiv = document.getElementById('favoriteList');
+                
+                if (favorites.length === 0) {
+                    listDiv.innerHTML = '<div class="stats"><p>還沒有收藏任何單字</p></div>';
+                    return;
+                }
+                
+                let html = '<div class="stats">';
+                favorites.forEach(word => {
+                    const categoryIcon = this.getCategoryIcon(word.id);
+                    html += `
+                        <div style="margin-bottom: 12px; padding: 12px; border-bottom: 1px solid #e2e8f0; border-radius: 8px; background: white;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div style="flex: 1;">
+                                    <strong>${word.id}: ${word.kanji || word.hiragana}</strong>
+                                    <span style="color: #718096; font-size: 0.9em;"> - ${word.meaning}</span>
+                                </div>
+                                <span style="font-size: 1.2em;">${categoryIcon}</span>
+                            </div>
+                            <div style="color: #718096; font-size: 0.85em; margin-top: 4px;">${word.usage}</div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                listDiv.innerHTML = html;
+            },
+
+            // 取得類別圖標
+            getCategoryIcon: function(wordId) {
+                const prefix = wordId.charAt(0);
+                const icons = {
+                    'N': '📖', // 名詞
+                    'I': '🔵', // い形容詞
+                    'A': '🟢', // な形容詞
+                    'V': '🏃', // 動詞
+                    'D': '⚡', // 副詞
+                    'O': '🔊', // 疊詞
+                    'K': '🙏', // 敬語
+                    'G': '📝'  // 文法
+                };
+                return icons[prefix] || '📝';
+            },
+
+            // 文字轉語音
+            speakText: function(text) {
+                if ('speechSynthesis' in window) {
+                    // 停止之前的語音
+                    window.speechSynthesis.cancel();
+                    
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'ja-JP';
+                    utterance.rate = 0.8;
+                    utterance.pitch = 1.0;
+                    utterance.volume = 0.8;
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    alert('您的瀏覽器不支援語音功能');
+                }
+            },
+
+            speakCurrentWord: function() {
+                const current = this.currentVocab[this.currentQuestionIndex];
+                this.speakText(current.hiragana);
+            },
+
+            speakCurrentStudyWord: function() {
+                const current = this.studyWords[this.currentStudyIndex];
+                this.speakText(current.hiragana);
+            },
+
+            // 工具函數
+            shuffleArray: function(array) {
+                const newArray = [...array];
+                for (let i = newArray.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                }
+                return newArray;
+            },
+
+            // 學習進度功能
+            saveProgress: function(score, total) {
+                const progress = JSON.parse(localStorage.getItem('vocabProgress') || '{}');
+                const today = new Date().toISOString().split('T')[0];
+                
+                if (!progress[today]) {
+                    progress[today] = { correct: 0, total: 0, sessions: 0 };
+                }
+                
+                progress[today].correct += score;
+                progress[today].total += total;
+                progress[today].sessions += 1;
+                
+                localStorage.setItem('vocabProgress', JSON.stringify(progress));
+            },
+
+            loadProgress: function() {
+                return JSON.parse(localStorage.getItem('vocabProgress') || '{}');
+            },
+
+            showProgressStats: function() {
+                const progress = this.loadProgress();
+                const statsDiv = document.getElementById('progressStats');
+                
+                if (Object.keys(progress).length === 0) {
+                    statsDiv.innerHTML = '<div class="stats"><p>尚無學習記錄</p></div>';
+                    return;
+                }
+                
+                let html = '';
+                let totalCorrect = 0;
+                let totalQuestions = 0;
+                let totalSessions = 0;
+                
+                // 依日期顯示進度
+                const dates = Object.keys(progress).sort().reverse().slice(0, 7); // 只顯示最近7天
+                dates.forEach(date => {
+                    const data = progress[date];
+                    const percentage = Math.round((data.correct / data.total) * 100);
+                    totalCorrect += data.correct;
+                    totalQuestions += data.total;
+                    totalSessions += data.sessions;
+                    
+                    html += `
+                        <div class="stats">
+                            <strong>${date}</strong><br>
+                            📊 答對: ${data.correct}/${data.total} (${percentage}%)<br>
+                            🎯 練習次數: ${data.sessions}次
+                        </div>
+                    `;
+                });
+                
+                // 總計
+                const totalPercentage = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+                html = `
+                    <div class="stats" style="background: #e6fffa; border-left: 4px solid #38a169;">
+                        <strong>📈 總計統計</strong><br>
+                        ✅ 總答對: ${totalCorrect}/${totalQuestions} (${totalPercentage}%)<br>
+                        🎯 總練習次數: ${totalSessions}次<br>
+                        📅 最近記錄: ${dates.length}天
+                    </div>
+                ` + html;
+                
+                statsDiv.innerHTML = html;
+            }
+        };
+
+        // 初始化應用程式
+        document.addEventListener('DOMContentLoaded', function() {
+            app.init();
+        });
+    </script>
 </body>
 </html>

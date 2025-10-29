@@ -1,4 +1,4 @@
-const CACHE_NAME = 'japanese-vocab-v1.0.1';
+const CACHE_NAME = 'japanese-vocab-v1.0.0';
 const urlsToCache = [
   './',
   './index.html',
@@ -13,20 +13,18 @@ const urlsToCache = [
   './data/grammar.js'
 ];
 
+// 安裝 Service Worker
 self.addEventListener('install', event => {
   console.log('Service Worker 安裝中...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('開始快取資源...');
+        console.log('快取已開啟');
         return cache.addAll(urlsToCache);
       })
       .then(() => {
-        console.log('所有資源快取完成');
+        console.log('所有資源已快取');
         return self.skipWaiting();
-      })
-      .catch(error => {
-        console.error('快取失敗:', error);
       })
   );
 });
@@ -82,10 +80,7 @@ self.addEventListener('fetch', event => {
       })
       .catch(() => {
         // 當離線且沒有快取時，可以返回自定義離線頁面
-        return new Response('離線模式', {
-          status: 200,
-          headers: { 'Content-Type': 'text/plain' }
-        });
+        return caches.match('./index.html');
       })
   );
 });
